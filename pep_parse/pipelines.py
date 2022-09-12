@@ -17,7 +17,7 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         time = dt.datetime.now().strftime(DATETIME_FORMAT)
-        with open(f'results/status_summary_{time}', mode='w',
+        with open(f'results/status_summary_{time}.csv', mode='w',
                   newline='', encoding='utf-8') as file:
             summary_writer = csv.writer(file)
             summary_writer.writerow(('Статус', 'Количество'))
