@@ -1,6 +1,5 @@
 import csv
 import datetime as dt
-
 from collections import defaultdict
 
 from pep_parse.settings import BASE_DIR, DATETIME_FORMAT
