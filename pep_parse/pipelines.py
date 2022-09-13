@@ -3,7 +3,7 @@ import datetime as dt
 
 from collections import defaultdict
 
-from pep_parse.settings import DATETIME_FORMAT
+from pep_parse.settings import BASE_DIR, DATETIME_FORMAT
 
 
 class PepParsePipeline:
@@ -17,8 +17,8 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         time = dt.datetime.now().strftime(DATETIME_FORMAT)
-        with open(f'results/status_summary_{time}.csv', mode='w',
-                  newline='', encoding='utf-8') as file:
+        filename = BASE_DIR / f'results/status_summary_{time}.csv'
+        with open(filename, mode='w', newline='', encoding='utf-8') as file:
             summary_writer = csv.writer(file)
             summary_writer.writerow(('Статус', 'Количество'))
             summary_writer.writerows(self.status_count_dict.items())
